@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication2.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="407.0" prefWidth="621.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxapplication2.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <TabPane prefHeight="413.0" prefWidth="624.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Consultas Predefinidas">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="539.0">
+                     <children>
+                        <TableView layoutX="11.0" layoutY="164.0" prefHeight="200.0" prefWidth="596.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="164.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                        <MenuButton layoutX="109.0" layoutY="69.0" mnemonicParsing="false" text="Elegir Consulta" AnchorPane.leftAnchor="109.0">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Consulta 1" />
+                            <MenuItem mnemonicParsing="false" text="Consulta 2" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 3" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 4" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 5" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 6" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 7" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 8" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 9" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 10" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 11" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 12" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 13" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 14" />
+                              <MenuItem mnemonicParsing="false" text="Consulta 15" />
+                          </items>
+                        </MenuButton>
+                        <Button layoutX="425.0" layoutY="69.0" mnemonicParsing="false" text="Limpiar Tabla" AnchorPane.rightAnchor="109.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Registrar Licencias(?)">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Consultar Multas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Registrar Multas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
     </children>
 </AnchorPane>
