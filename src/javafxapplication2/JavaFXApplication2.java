@@ -22,7 +22,8 @@ public class JavaFXApplication2 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setResizable(false);
+         stage.setTitle("ULTIMATE TURKEY PUNCHER 44 LIBRE DE VIRUS PROMOCION VIAGRA 25% MIEL DE ABEJA Y TACOS");
         stage.setScene(scene);
         stage.show();
     }
