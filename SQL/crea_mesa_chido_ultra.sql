@@ -211,7 +211,7 @@ ALTER TABLE MultaAgente ADD CONSTRAINT check_mul_val CHECK(articuloInfringido >=
 GO
 
 /* Tabla auxiliar con los puntos de licencia de los infracciones más comunes. */
-create table infp (articulo tinyint not null, puntos tinyint not null);
+create table infp (articulo tinyint not null, puntos tinyint not null, constraint pk_infp primary key (articulo));
 GO
 
 insert into infp (articulo,puntos) values (1,0);
