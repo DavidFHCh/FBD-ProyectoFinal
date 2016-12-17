@@ -1,0 +1,132 @@
+#( Las direcciones van desglosadas )#
+
+- Armadora
+:: Marca (id)
+:: Dirección
+
+- Modelo
+:: Modelo (id)
+:: Tipo
+:: Litros de motor
+:: cilindros
+:: pasajeros
+:: espacio de equipaje
+:: capacidad del tanque
+
+Vender (Relación)
+Armadora N, Total (para qué queremos marcas que no vendan autos?)
+Modelo M, Total
+
+- Auto
+:: Número de serie del motor (id)
+:: Transmisión
+:: Lugar de fabricación (bool?, 1 para "nacional", 0 para "en el extranjero")
+:: Color
+
+Ser_modelo (Relación)
+Auto N, Total
+Modelo 1
+
+Ser_Armadora (Relación)
+Auto N, Total
+Armadora 1
+
+-Placa (débil, depende de auto)
+:: fecha de otorgación de placas
+:: Fecha de fin de placas? (creo que esto no se necesita)
+:: Número de Placa (Discriminante)
+:: Estado
+:: Actual
+
+Emplaque (Relación débil)
+Auto 1
+Placa N, Total
+
+Emplaque dueño (Relación)
+Propietario 1 (a quien se le entrega la placa, es único por eso 1)
+Placa N, Total
+
+-Persona
+:: RFC (ID, fuck it)
+:: Apellido paterno
+:: Apellido materno
+:: Nombres(s)
+:: fecha nacimiento
+:: calle
+:: numero
+:: colonia
+:: cp
+:: estado
+:: telefono
+:: correo
+
+- Propiedad de (Relación)
+Auto N
+Propietario 1
+
+- Agente de tránsito
+:: numero de registro personal (id)
+
+Es persona (Relación)
+Agente de tránsito 1, Total
+Persona 1
+
+- Licencia
+:: Número de licencia (ID)
+:: Tipo
+:: Vigencia
+:: Vencimiento
+:: Puntos (calculado)
+:: Fecha de suspensión (nullable)
+
+Conductor (Relación)
+Licencia 1, Total
+Propietario 1
+
+-Tarjeta de circulación
+:: Número de tarjeta (id)
+:: Vigencia
+:: Fecha de vencimiento
+
+Corresponde a (Relación)
+Tarjeta de circulación 1, Total
+Placa 1
+
+Tener (Relación)
+Propietario 1
+Tarjeta de circulación N, Total
+
+-Multa
+:: Número de expediente (id, cierto?)
+:: Fecha y hora (timestamp)
+:: articulo infringido
+:: dirección de la infracción
+:: importe
+
+Levantar multa (Relación)
+Agente 1
+Multa N, total
+
+Multa a licencia (Relación)
+Multa 1
+Licencia N
+
+Multa a tarjeta (Relación)
+Multa 1
+Tarjeta N
+
+-Fotomulta (débil, depende de cámara)
+:: Velocidad
+:: hora y fecha
+
+-Cámara
+:: ID cámara (ID)
+:: Coordenadas
+
+Tomar (Relación débil)
+Cámara 1
+Fotomulta N, Total
+
+Multar (Relación)
+Fotomulta N, Total (Supongamos que todos los autos llevan placas)
+Placa 1

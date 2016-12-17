@@ -1,0 +1,16 @@
+Consultas:
+1. Calle donde se cometen la mayor cantidad de infracciones, por estado (Multas Agente solamente)
+2. Cantidad de cada tipo de vehículo registrado 
+3. Información sobre las licencias suspendidas de algún estado (digamos, Hidalgo o algo)
+4. Agente que más multas ha dado 
+5. Los 3 modelos más populares de auto registrados
+6. Información de los autos que sean propiedad de gente que se apellide (algún apellido aquí)
+7. Todas las licencias de algún estado en particular que tengan más de 4 puntos
+8. Todos los agentes de tránsito que hayan cometido infracciones
+9. Cada auto registrado de algún estado, con su historial de placas
+10. Cámara con la mayor cantidad de fotomutlas
+11. Cantidad de infracciones al articulo (inserte artículo aquí) en el estado (inserte estado aquí)
+12. Cantidad de propietarios de autos por estado
+13. Información de las multas de todas las licencias suspendidas
+14. Color del auto con mayor cantidad de infracciones
+15. Cantidad de infracciones cometidas, agrupada por mes

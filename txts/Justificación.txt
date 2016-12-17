@@ -1,0 +1,35 @@
+Para almacenar la información concerniente a la primera fase, tenemos tres entidades:
+
+- Marca: representa una marca de autos (Chevrolet, Ford, etc)
+- Modelo: representa un modelo de auto (Camaro, Focus, etc)
+- Armadora: representa una armadora de autos.
+
+La Armadora sabe su dirección y la única Marca para la que fabrica mediante la relación Armar, aquí nos interesan sólo aquellas armadoras que fabrican autos para alguna marca, pero permitimos marcas de las cuales no se tenga información de armadoras por si no existen en el país.
+
+La relación entre Marca y Modelo nos permite tener lo siguiente:
+
+- Modelos que sean fabricados por distintas marcas (como fue el caso de Neon de Dodge y Neon de Chrysler)
+- Múltiples modelos que ofrece una marca
+- Todo modelo debe ser fabricado por una marca y sólo nos interesamos por marcas para las que exista algún modelo.
+
+Para una marca, podemos obtener sus modelos disponibles, donde cada modelo sabe su nombre, la capacidad del tanque de gasolina, espacio para equipaje, número de pasajeros, cantidad de cilindros, de litros de motor y el tipo de auto. Para un auto particular, esto es, un ejemplar con dueño, mediante las relaciones serMarca y serModelo podemos identificar la marca y modelo del auto, tal auto fue obtenido a gusto del comprador, por lo que podemos saber el tipo de transmisión del auto y el lugar de fabricación, cubriendo la información solicitada para el proyecto. Adicionalmente tenemos el color del auto (de agencia, este puede cambiar posteriormente) y cada auto es identificado por el número de serie del motor.
+
+El emplaque de un auto se modela con la entidad Placa, donde encontramos el número de placa, estado de la república y fecha de otorgación. Mediante la relación emplaque sabemos el auto (número de serie del motor y todos los demás datos) al que pertenece la placa. Mediante la relación emplaqueDueño tenemos la persona a la que le fueron entregadas las placas, es decir, el propietario. Con los atributos auxiliares "Actual" y "fechaFin" se llevará la historia de placas de un auto.
+
+La historia de los propietarios la tenemos con la relación PropiedadDe, que nos permite llevar un registro de los dueños de un auto con los periodos de propiedad acotados por "fechaInicio" y "fechaFin". El otro atributo de la relación, "actual", nos ayudará a saber el último propietario registrado.
+
+Con la entidad persona modelamos los datos de las personas registradas en el sistema, tenemos su RFC (que se asume tiene homoclave y es único para este proyecto), el nombre completo, fecha de nacimiento, dirección, teléfono y correo electrónico.
+
+Los agentes de tránsito se modelan con la entidad AgenteTransito, que sabe su número de registro personal y le corresponde su información como persona mediante la relación SerPersona (toda la información de un agente debe existir en la base).
+
+Las licencias se modelan con la entidad Licencia. La entidad Licencia sabe el número de licencia, la vigencia, la fecha de vencimiento (podríamos tener en vez de esto la fecha de expedición, pero no hace diferencia alguna), tipo de licencia, la fecha de suspensión (si es que está suspendida/cancelada) y los puntos (los cuales se pueden calcular a partir de las multas).
+
+La tarjeta de circulación se modela con la entidad TarjetaCirculacion, la cual conoce la fecha de vencimiento (situación análoga a la licencia), la vigencia y el número de tarjeta, los datos del propietario los tenemos con la relación Tener (toda tarjeta tiene esta información), la información del auto y placas la obtenemos mediante la placa con la relación Corresponde (toda tarjeta tiene esta información).
+
+Las multas se modelan mediante la entidad Multa, con la cual sabemos el número de expediente, hora y fecha en que se levantó la multa. Una multa es forzosamente una fotomulta (Fotomulta) o una multa levantada por un agente de tránsito (MultaAgente), pero no puede ser ambas.
+
+Una fotomulta toma además el color del auto infractor (captado por la cámara, puede no coincidir con el color registrado si hubo un cambio de pintura pues en la realidad no se registran cambios estéticos) y la velocidad que tenía en ese momento. Las fotomultas son tomadas por cámaras, las cuales tienen un identificador único y coordenadas, con lo que podemos obtener la ubicación de la fotomulta. Toda fotomulta se asocia con un auto, a través de su placa con la relación multar, con esto tenemos las placas.
+
+Si una multa es levantada por un agente de tránsito, se anota el artículo infringido, el importe por la infracción y la dirección. Los datos de la licencia y tarjeta de circulación los tenemos con las relaciones multaLicencia y multaTarjeta respectivamente.
+
+

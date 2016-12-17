@@ -1,0 +1,51 @@
+Dependencias funcionales:
+
+- Armadora: Dado que la dirección es solicitada a la armadora para el registro y cada armadora se encarga de los modelos de una única marca, podemos obtener la siguiente dependencia funcional, donde id es un identificador único para cada armadora.
+ id -> calle, numero, colonia, cp, estado, marca
+
+- Marca: Es un simple registro de los nombres de marcas de autos.
+
+- Auto: De fábrica tenemos su número de serie, la transmisión, color y lugar de fabricación son a gusto del cliente, además, un auto corresponde a un único modelo y una única marca, con lo que tenemos lo siguiente:
+ noSerieMotor -> tansmision, color, lugarFabricacion, marca, modelo
+
+- Modelo: El nombre del modelo lo identifica, además sus especificaciones son fijas, es decir, ya está determinado su espacio de equipaje, capacidad del tanque, número de pasajeros, los cilindros del motor, litros y el tipo de auto.
+ modelo -> capTanque, espEquipaje, pasajeros, cilindros, litros, tipo
+
+- Vender: Relaciona los modelos con las marcas, modelo los modelos vendidos por las marcas.
+
+- PropiedadDe: El registro de propiedad de un auto. Cada auto tiene un dueño en un intervalo de tiempo. El campo "actual" servirá de apoyo para identificar al dueño actual y mejorar el performance de la base de datos, pero semánticamente sabemos si, dado un auto y una persona, el auto le pertenece actualmente a la persona mientras no se registre una venta oficialmente.
+ noSerieMotor, RFC -> fechaInicio, fechaFin(, actual)
+
+- Persona: Una persona. El RFC (asumimos tiene homoclave) determina únicamente a una persona, con lo que determina sus datos personales, nombre, dirección e información de contacto.
+ RFC -> nombre, aPaterno, aMaterno, fechaNac, calle, numero, colonia, cp, estado, telefono, correo
+
+- AgenteTransito: Se tiene un número de registro personal que lo identifica como un agente. Su información como persona deberá obtenerse mediante su RFC, el cual es único.
+ numRegistroPersonal -> RFC
+
+- Placa: Cada placa es identificada por su número de placa, cuando se emplaca un auto se registra información del propietario (mediante su RFC tenemos su información), fecha y estado de otorgación y el auto que se emplaca (mediante su número de serie se obtiene), mediante los registros de cambio de placa también podemos saber cuando una placa fue cambiada ("fechaFin"). El campo actual es auxiliar para el performance, ayuda a determinar más fácilmente si una placa es la que usa actualmente un auto.
+ numeroPlaca -> estado, fechaOtorgacion, RFC, numSerieMotor, fechaFin(, actual)
+ 
+- Licencia: La licencia tiene información desde que fue expedida como el tipo, vigencia, fecha de vencimiento, así como la persona que solicitó la licencia (sus datos los obtenemos mediante su RFC). Si una licencia es cancelada también sabemos la fecha en que ocurrió tal evento ("fechaSusp").
+ numLicencia -> tipo, vigencia, vencimiento, RFC, fechaSusp
+
+- MultaAgente: Cuando una multa es levantada se anota toda la información necesaria, por lo que una multa sabe la fecha y hora de la infracción, el artículo infringido, importe, dirección del suceso, el agente que levanta la multa, la licencia del conductor (numLicencia nos da toda la información que se necesite de la persona) y la tarjeta de circulación del auto (numTarjeta nos da toda la información que se necesite del auto). Cada multa tiene su número de expediente único que la identifica en el sistema.
+ numExpediente -> fecha, hora, articuloInfringido, importe, calle, numero, colonia, cp, numRegistroPersonal, numLicencia, numTarjeta
+
+- Camara: Las cámaras saben su ubicación, la cual aparece en las fotomultas que tomen.
+ idCamara -> coordenadas
+
+- Fotomulta: Las fotomultas saben la fecha y hora en que se toma, captan la velocidad del auto que van a multar, su placa y color, también la cámara que tomó la foto (y con ello la dirección). Cada fotomulta es una multa y tiene su número de expediente.
+ numExpediente -> fecha, hora, velocidad, color, idCamara, numeroPlaca
+
+- TarjetaCiruclacion: Para tramitar la tarjeta de circulación se pide cierta información que es el número de placa del auto para el cual se quiere la tarjeta y el RFC del dueño, la tarjeta tiene una vigencia y una fecha de vencimiento. Cada una queda identificada por su número.
+ numTarjeta -> vigencia, fechaVencimiento, numeroPlaca, RFC
+
+Normalización:
+
+Primero notemos que el esquema se encuentra en 2NF pues todos los campos no son multivaluados (salvo nombre de Persona pero de otra forma no se puede resolver el probelam de múltiples nombres de una persona) y cada relación tiene una llave primaria.
+
+Las dependencias funcionales econtradas con anterioridad son todas las que se pueden obtener pues cada relación modela sólo la información propia de las entidades que se tenían antes de la traducción.
+
+De ser necesaria información de alguna otra relación ésta se puede obtener mediante los campos que aparecen en el lado izquierdo, por ejemplo, en una multa se requiere el nombre de la persona que conduce y su licencia (parte de las reglas de negocio), pero si tenemos la licencia, tenemos el RFC de la persona pues esta información le corresponde, y con el RFC tenemos el nombre de la persona pues esta es información propia de una persona que queda determinada por su RFC.
+
+Al modelar sólo la información necesaria para cada entidad, cuando se traduce al modelo Relacional, notamos que la redundancia de datos se minimiza pues en una relación tenemos la información requerida por las relgas de negocio. Más aún, las llaves primarias, en su mayoría naturales, resultan ser los lados izquierdos de las dependencias funcionales obtenidas en el apartado anterior, y como en cada relación sólo encontramos una dependencia funcional donde las cerraduras de los lados izquierdos alcanzan a todos los campos de la relación (* Falta calcular las cerraduras, No lo olvides *insert gay Sponge Bob momo here* *) y ninguna es violación a la cuarta forma normal todo el esquema está en BCNF (aclaremos que la relación Vender tiene dos campos y por lo tanto está en BCNF aunque no tenga dependencias funcionales).

@@ -1,0 +1,31 @@
+Políticas de mantenimiento:
+
+Armadora:
+Si una marca desaparece la armadora no desaparece necesariamente. Si una marca cambia de nombre asumimos que la armadora sigue construyendo autos para esa compañía.
+
+Auto:
+La marca o modelo no pueden desaparecer si hay registro de autos que circulen actualmente. De ser necesario, el modelo y marca se atualizan pues sigue siendo el mismo auto físicamente.
+
+Vender:
+Si el nombre del modelo o de la marca cambia, se actualizan los nombres pues sigue siendo el mismo auto físicamente. Si un auto o marca desaparecen, las relaciones desaparecen.
+
+PropiedadDe:
+El RFC y número de serie no cambian. Dado que se quiere una historia de propiedad, estas relaciones no pueden desaparecer, a menos que desaparezca el auto.
+
+AgenteTransito:
+El RFC nunca cambia, si una persona desaparece por alguna razón, desaparece el agente.
+
+Placa:
+Dado que requerimos un seguimiento de las placas, éstas no pueden desaparecer, y requieren información del auto y de la persona a la que le fué expedida.
+
+Licencia:
+Si una persona desaparece, su licencia también, a menos que alguna otra restricción evite que desaparezca por ser información necesaria (indirectamente) para las multas.
+
+MultaAgente:
+Las licencias y tarjetas de circulación no desaparecen de la base de datos, ya que esa información es necesaria para el registro de las multas, entonces no hay necesidad de establecer políticas aquí. Para un agente de tránsito, su número de registro personal nunca cambia por lo que no se necesita una política ON UPDATE, si desaparece por alguna razón, el valor se vuelve NULL.
+
+Fotomulta:
+Similarmente, si una cámara desaparece, la fotomulta no lo hace, sigue en los expedientes.
+
+TarjetaCirculacion:
+El RFC y las placas no cambian, las tarjetas de circulación son necesarias para la integridad de los datos por lo que no desaparecen, y tanto el RFC como las placas son información necesaria de éstas.
