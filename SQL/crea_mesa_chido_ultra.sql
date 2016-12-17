@@ -212,6 +212,7 @@ GO
 
 /* Tabla auxiliar con los puntos de licencia de los infracciones más comunes. */
 create table infp (articulo tinyint not null, puntos tinyint not null);
+GO
 
 insert into infp (articulo,puntos) values (1,0);
 insert into infp (articulo,puntos) values (2,0);
