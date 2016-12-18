@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="858.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxapplication2.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication2.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <TabPane prefHeight="413.0" prefWidth="624.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -25,24 +25,24 @@
                         </TableView>
                         <MenuButton fx:id="tiposConsultas" layoutX="109.0" layoutY="69.0" mnemonicParsing="false" text="Elegir Consulta" AnchorPane.leftAnchor="109.0">
                           <items>
-                            <MenuItem fx:id="consul1" mnemonicParsing="false" text="Consulta 1" />
-                            <MenuItem fx:id="consul2" mnemonicParsing="false" text="Consulta 2" />
-                              <MenuItem fx:id="consul3" mnemonicParsing="false" text="Consulta 3" />
-                              <MenuItem fx:id="consul4" mnemonicParsing="false" text="Consulta 4" />
-                              <MenuItem fx:id="consul5" mnemonicParsing="false" text="Consulta 5" />
-                              <MenuItem fx:id="consul6" mnemonicParsing="false" text="Consulta 6" />
-                              <MenuItem fx:id="consul7" mnemonicParsing="false" text="Consulta 7" />
-                              <MenuItem fx:id="consul8" mnemonicParsing="false" text="Consulta 8" />
-                              <MenuItem fx:id="consul9" mnemonicParsing="false" text="Consulta 9" />
-                              <MenuItem fx:id="consul10" mnemonicParsing="false" text="Consulta 10" />
-                              <MenuItem fx:id="consul11" mnemonicParsing="false" text="Consulta 11" />
-                              <MenuItem fx:id="consul12" mnemonicParsing="false" text="Consulta 12" />
-                              <MenuItem fx:id="consul13" mnemonicParsing="false" text="Consulta 13" />
-                              <MenuItem fx:id="consul14" mnemonicParsing="false" text="Consulta 14" />
-                              <MenuItem fx:id="consul15" mnemonicParsing="false" text="Consulta 15" />
+                            <MenuItem fx:id="consul1" mnemonicParsing="false" onAction="#botonConsulta1" text="Consulta 1" />
+                            <MenuItem fx:id="consul2" mnemonicParsing="false" onAction="#botonConsulta2" text="Consulta 2" />
+                              <MenuItem fx:id="consul3" mnemonicParsing="false" onAction="#botonConsulta3" text="Consulta 3" />
+                              <MenuItem fx:id="consul4" mnemonicParsing="false" onAction="#botonConsulta4" text="Consulta 4" />
+                              <MenuItem fx:id="consul5" mnemonicParsing="false" onAction="#botonConsulta5" text="Consulta 5" />
+                              <MenuItem fx:id="consul6" mnemonicParsing="false" onAction="#botonConsulta6" text="Consulta 6" />
+                              <MenuItem fx:id="consul7" mnemonicParsing="false" onAction="#botonConsulta7" text="Consulta 7" />
+                              <MenuItem fx:id="consul8" mnemonicParsing="false" onAction="#botonConsulta8" text="Consulta 8" />
+                              <MenuItem fx:id="consul9" mnemonicParsing="false" onAction="#botonConsulta9" text="Consulta 9" />
+                              <MenuItem fx:id="consul10" mnemonicParsing="false" onAction="#botonConsulta10" text="Consulta 10" />
+                              <MenuItem fx:id="consul11" mnemonicParsing="false" onAction="#botonConsulta11" text="Consulta 11" />
+                              <MenuItem fx:id="consul12" mnemonicParsing="false" onAction="#botonConsulta12" text="Consulta 12" />
+                              <MenuItem fx:id="consul13" mnemonicParsing="false" onAction="#botonConsulta13" text="Consulta 13" />
+                              <MenuItem fx:id="consul14" mnemonicParsing="false" onAction="#botonConsulta14" text="Consulta 14" />
+                              <MenuItem fx:id="consul15" mnemonicParsing="false" onAction="#botonConsulta15" text="Consulta 15" />
                           </items>
                         </MenuButton>
-                        <Button fx:id="limpiarTabla" layoutX="425.0" layoutY="69.0" mnemonicParsing="false" text="Limpiar Tabla" AnchorPane.rightAnchor="109.0" />
+                        <Button fx:id="limpiarTabla" layoutX="425.0" layoutY="69.0" mnemonicParsing="false" onAction="#accionLimpiarTablaBoton" text="Limpiar Tabla" AnchorPane.rightAnchor="109.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -63,7 +63,7 @@
                         <Label layoutX="271.0" layoutY="43.0" text="RFC" AnchorPane.bottomAnchor="444.0" AnchorPane.leftAnchor="271.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="43.0" />
                         <Label layoutX="385.0" layoutY="72.0" text="o bien " AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="436.0" AnchorPane.topAnchor="72.0" />
                         <Label layoutX="216.0" layoutY="102.0" text="Número de placa" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="102.0" />
-                        <Button fx:id="botonConsultar" layoutX="641.0" layoutY="68.0" mnemonicParsing="false" text="Consultar" AnchorPane.bottomAnchor="411.0" AnchorPane.leftAnchor="641.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="68.0" />
+                        <Button fx:id="botonConsultar" layoutX="641.0" layoutY="68.0" mnemonicParsing="false" onAction="#botonConsultar" text="Consultar" AnchorPane.bottomAnchor="411.0" AnchorPane.leftAnchor="641.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="68.0" />
                      </children>
                   </AnchorPane>
               </content>
@@ -80,7 +80,7 @@
                         <Label layoutX="113.0" layoutY="151.0" text="VIgencia" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="151.0" />
                         <Label layoutX="575.0" layoutY="105.0" text="Tipo" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="105.0" />
                         <Label layoutX="375.0" layoutY="268.0" text="Fecha deVencimiento" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="268.0" />
-                        <Button fx:id="botonAgregar1" layoutX="406.0" layoutY="395.0" mnemonicParsing="false" text="Agregar" />
+                        <Button fx:id="botonAgregar1" layoutX="406.0" layoutY="395.0" mnemonicParsing="false" onAction="#botonAgregar1" text="Agregar" />
                      </children>
                   </AnchorPane>
             </content>
@@ -120,7 +120,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <Button fx:id="botonAgregar2" layoutX="620.0" layoutY="269.0" mnemonicParsing="false" text="Agregar" />
+                        <Button fx:id="botonAgregar2" layoutX="620.0" layoutY="269.0" mnemonicParsing="false" onAction="#botonAgregar2" text="Agregar" />
                      </children>
                   </AnchorPane>
               </content>
