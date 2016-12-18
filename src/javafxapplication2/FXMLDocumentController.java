@@ -69,7 +69,97 @@ public class FXMLDocumentController implements Initializable {
     
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void accionLimpiarTablaBoton(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+    @FXML
+    private void botonConsultar(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+    @FXML
+    private void botonAgregar1(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+    @FXML
+    private void botonAgregar2(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+    @FXML
+    private void botonConsulta1(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta2(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta3(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta4(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta5(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta6(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta7(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta8(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta9(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta10(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta11(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta12(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta13(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta14(ActionEvent event) {
+        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+    }
+    
+     @FXML
+    private void botonConsulta15(ActionEvent event) {
         //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
     }
     
