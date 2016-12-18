@@ -1,4 +1,8 @@
-
+/*
+ * Función puntos.
+ * Calcula los puntos de una licencia en base a las multas que ha recibido.
+ * Recibe el número de la licencia (int) y devuelve el número de puntos (int).
+ */
 CREATE FUNCTION dbo.puntos (@licencia int)
 RETURNS int AS
 BEGIN
