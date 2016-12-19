@@ -149,7 +149,7 @@ CREATE TABLE FotoMulta
 	numExpediente int NOT NULL,
 	fecha date NOT NULL,
 	hora time NOT NULL,
-	velocidad smallint,
+	velocidad smallint NOT NULL,
 	color varchar(16) NOT NULL,
 	idCamara int NULL,
 	numeroPlaca varchar(16) NOT NULL,
