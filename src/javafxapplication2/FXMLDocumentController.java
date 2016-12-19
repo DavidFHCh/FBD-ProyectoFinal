@@ -5,6 +5,7 @@
  */
 package javafxapplication2;
 
+import java.sql.SQLException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -127,102 +128,187 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         }
-        String sfechaVencimiento = fechaVencimiento.getValue().toString();
-          //aqui llama el metodo que le corresponda del controlador.
+        
+        LocalDate fVen = fechaVencimiento.getValue();
+        
+        // Llamada a BD
+        try {
+            Conexion.regLicencia(tipo, vigenciaLic, rfc, fVen);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
     @FXML
     private void botonAgregar2(ActionEvent event) {
         String numExp = numExpediente.getCharacters().toString();
         String artInfringido = artInfrigido.getCharacters().toString();
+        int art = Integer.parseInt(artInfringido);
         String simporte = importe.getCharacters().toString();
+        Float importe = Float.parseFloat(simporte);
         String snumAgente = numAgente.getCharacters().toString();
         String snumLicencia = numLicencia.getCharacters().toString();
         String snumTarjeta = numTarjeta.getCharacters().toString();
+        int numLicencia = Integer.parseInt(snumLicencia);
+        int numTarjeta = Integer.parseInt(snumTarjeta);
         String scolonia = colonia.getCharacters().toString();
         String scalle = calle.getCharacters().toString();
         String scp = cp.getCharacters().toString();
         String snum = num.getCharacters().toString();
+        
+        if (snum.equals(""))
+            snum = "NULL";
+        
         String shora = hora.getCharacters().toString();
         String sminutos = minutos.getCharacters().toString();
-        String sfecha = fecha.getValue().toString();
-        //aqui llama el metodo que le corresponda del controlador.
+        int ihora = Integer.parseInt(shora);
+        int iminutos = Integer.parseInt(sminutos);
+        
+        LocalDate sfecha = fecha.getValue();
+        
+        // Llamada a BD
+        try {
+            Conexion.regMultaAgente(sfecha, ihora, iminutos, art, importe, scalle, snum, scolonia, 
+                scp, snumAgente, numLicencia, numTarjeta);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
-    
+  
     //en todos estos se va a llamarel metodo llenaTableView, con el respectivo resultset.
     @FXML
     private void botonConsulta1(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(1), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta2(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(2), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta3(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(3), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta4(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(4), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta5(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(5), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta6(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(6), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta7(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(7), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta8(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(8), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta9(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(9), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta10(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(10), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta11(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(11), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta12(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(12), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta13(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(13), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta14(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(14), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
      @FXML
     private void botonConsulta15(ActionEvent event) {
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        try {
+            llenaTableView(Conexion.preCon(15), resultadosPredefinidos);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
     @Override

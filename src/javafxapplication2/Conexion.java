@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.CallableStatement;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 
 
@@ -38,9 +40,9 @@ public class Conexion {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String connectionUrl = "jdbc:sqlserver://localhost;" + //o la ip del servidor y su puerto
-                                    "databaseName=semovi;" +
+                                    "databaseName=final;" +
                                     "user=sa;" +
-                                    "password=huevos1"; 
+                                    "password=fundamentosfbd"; 
             con = DriverManager.getConnection(connectionUrl);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("SQLException: " + e.getMessage() + " conectar =(");
@@ -60,46 +62,196 @@ public class Conexion {
         }
     }
     
-    public void regLicencia(String tipo, String vigencia, String rfc, LocalDate date){
+    public static void regPlaca (String plate, LocalDate date, String rfc, String serial) throws SQLException {
+        Connection dbConnection = null;
+	CallableStatement callableStatement = null;
+
+        Date sqlDate = Date.valueOf(date);
         
-    }
-     
-    private static void callrqLicencia() throws SQLException {
+	String getDBUSERByUserIdSql = "{call expPlaca(?,?,?,?)}";
 
-		Connection dbConnection = null;
-		CallableStatement callableStatement = null;
+	try {
+            Conexion conex = new Conexion();
+            conex.conectar();
+            dbConnection = conex.con;
+            callableStatement = dbConnection.prepareCall(getDBUSERByUserIdSql);
 
-		String getDBUSERByUserIdSql = "{call expLicencia(?,?,?,?)}";
+            callableStatement.setString(1, plate);
+            callableStatement.setDate(2, sqlDate);
+            callableStatement.setString(3, rfc);
+            callableStatement.setString(4, serial);
 
-		try {
-                    Conexion conex = new Conexion();
-                        conex.conectar();
-			dbConnection = conex.con;
-			callableStatement = dbConnection.prepareCall(getDBUSERByUserIdSql);
+            // execute getDBUSERByUserId store procedure
+            callableStatement.executeUpdate();
 
-			callableStatement.setInt(1, 10);
-			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(4, java.sql.Types.DATE);
+        } catch (Exception e) {
 
-			// execute getDBUSERByUserId store procedure
-			callableStatement.executeUpdate();
+            System.out.println(e.getMessage());
 
-		} catch (Exception e) {
+        } finally {
 
-			System.out.println(e.getMessage());
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
 
-		} finally {
-
-			if (callableStatement != null) {
-				callableStatement.close();
-			}
-
-			if (dbConnection != null) {
-				dbConnection.close();
-			}
-
-		}
-
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
 	}
+    }
+    
+    public static void regTarjeta (int vig, LocalDate date, String plate, String rfc) throws SQLException {
+        Connection dbConnection = null;
+	CallableStatement callableStatement = null;
+
+        Date sqlDate = Date.valueOf(date);
+        
+	String getDBUSERByUserIdSql = "{call expTarjeta(?,?,?,?)}";
+
+	try {
+            Conexion conex = new Conexion();
+            conex.conectar();
+            dbConnection = conex.con;
+            callableStatement = dbConnection.prepareCall(getDBUSERByUserIdSql);
+
+            callableStatement.setInt(1, vig);
+            callableStatement.setDate(2, sqlDate);
+            callableStatement.setString(3, plate);
+            callableStatement.setString(4, rfc);
+
+            // execute getDBUSERByUserId store procedure
+            callableStatement.executeUpdate();
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        } finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+	}
+    }
+    
+    public static void regLicencia (String tipo, String vigencia, String rfc, LocalDate date) throws SQLException {
+        Connection dbConnection = null;
+	CallableStatement callableStatement = null;
+
+        Date sqlDate = Date.valueOf(date);
+        
+	String getDBUSERByUserIdSql = "{call expLicencia(?,?,?,?)}";
+
+	try {
+            Conexion conex = new Conexion();
+            conex.conectar();
+            dbConnection = conex.con;
+            callableStatement = dbConnection.prepareCall(getDBUSERByUserIdSql);
+
+            callableStatement.setString(1, tipo);
+            callableStatement.setString(2, vigencia);
+            callableStatement.setDate(3, sqlDate);
+            callableStatement.setString(4, rfc);
+
+            // execute getDBUSERByUserId store procedure
+            callableStatement.executeUpdate();
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        } finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+	}
+    }
+    
+    public static void regMultaAgente (LocalDate date, int hour, int min, int art, Float money,
+        String street, String num, String col, String zc, String numRegPer, int lic, int card) throws SQLException {
+        Connection dbConnection = null;
+	CallableStatement callableStatement = null;
+
+        Date sqlDate = Date.valueOf(date);
+        Time time = new Time(hour, min, 0);
+        
+	String getDBUSERByUserIdSql = "{call regMultaAgente(?,?,?,?,?,?,?,?,?,?,?)}";
+
+	try {
+            Conexion conex = new Conexion();
+            conex.conectar();
+            dbConnection = conex.con;
+            callableStatement = dbConnection.prepareCall(getDBUSERByUserIdSql);
+
+            callableStatement.setDate(1, sqlDate);
+            callableStatement.setTime(2, time);
+            callableStatement.setInt(3, art);
+            callableStatement.setFloat(4, money);
+            callableStatement.setString(5, street);
+            callableStatement.setString(6, num);
+            callableStatement.setString(7, col);
+            callableStatement.setString(8, zc);
+            callableStatement.setString(9, numRegPer);
+            callableStatement.setInt(10, lic);
+            callableStatement.setInt(11, card);
+
+            // execute getDBUSERByUserId store procedure
+            callableStatement.executeUpdate();
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        } finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+	}
+    }
+    
+    public static ResultSet preCon(int con) throws SQLException{
+        Connection dbConnection = null;
+	CallableStatement callableStatement = null;
+        ResultSet ret = null;
+        
+        String proc = "{CALL c" + Integer.toString(con) + "}";
+        
+	try {
+            Conexion conex = new Conexion();
+            conex.conectar();
+            dbConnection = conex.con;
+            callableStatement = dbConnection.prepareCall(proc);
+            ret = callableStatement.getResultSet();
+            
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        } finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+            
+            return ret;
+	}
+    }
 }
