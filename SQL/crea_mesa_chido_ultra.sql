@@ -119,7 +119,7 @@ CREATE TABLE Licencia
 	vigencia tinyint NOT NULL,
 	vencimiento date NOT NULL,
 	fechaSusp date,
-	rfc char(13) NOT NULL UNIQUE,
+	rfc char(13) NOT NULL,
 	CONSTRAINT pk_licencia PRIMARY KEY (numLicencia)
 );
 GO
