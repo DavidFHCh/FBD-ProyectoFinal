@@ -13,7 +13,6 @@ BEGIN
 END;
 GO
 
-
 CREATE PROCEDURE expLicencia(
 	@tipo char(1),
 	@vigencia tinyint,
@@ -55,22 +54,10 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE expTarjeta (
-	@vigencia tinyint,
-	@fechaVencimiento date,
-	@numeroPlaca varchar(16),
-	@rfc char(13)
+CREATE PROCEDURE regMultaAgente (
+	
 )
 AS
 BEGIN
-	IF @vigencia IS NULL OR @fechaVencimiento IS NULL OR @numeroPlaca IS NULL OR @rfc IS NULL
-	BEGIN
-		RAISERROR('Datos insuficientes.',16,1);
-	END;
-	ELSE
-	BEGIN
-		INSERT INTO TarjetaCirculacion (vigencia, fechaVencimiento, numeroPlaca, rfc)
-		VALUES (@vigencia, @fechaVencimiento, @numeroPlaca, @rfc);
-	END;
+
 END;
-GO
