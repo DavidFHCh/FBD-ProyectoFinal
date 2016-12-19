@@ -76,39 +76,39 @@ Licencia
 :: rfc : RFC de la persona a quien se expide la licencia.
 
 MultaAgente
-:: numExpediente : 
-:: fecha : 
-:: hora : 
-:: articuloInfringido : 
-:: importe : 
-:: calle : 
-:: numero : 
-:: colonia : 
-:: cp : 
-:: numRegistroPersonal : 
-:: numLicencia : 
-:: numTarjeta : 
+:: numExpediente : número de expediente de la multa. Se dan automáricamente conforme se van agregando.
+:: fecha : fecha de la multa.
+:: hora : hora de la multa.
+:: articuloInfringido : artículo que fue infringido.
+:: importe : el importe de la multa.
+:: calle : calle del suceso.
+:: numero : numero.
+:: colonia : colonia.
+:: cp : código postal.
+:: numRegistroPersonal : número de regstro personal del agente que levanta la multa.
+:: numLicencia : número de licencia del infractor.
+:: numTarjeta : número de tarjeta de ciruclación del vehículo infractor.
 
 FotoMulta
-:: numExpediente : 
-:: fecha : 
-:: hora : 
-:: velocidad : 
-:: color : 
-:: idCamara : 
-:: numeroPlaca : 
+:: numExpediente : número de expediente de la multa. Se dan automáricamente conforme se van agregando.
+:: fecha : fecha de la multa.
+:: hora : hora de la multa.
+:: velocidad : velocidad del auto que causó la multa. Número entero, la velocidad se redondea.
+:: color : color del auto que registra la cámara.
+:: idCamara : el identificador de la cámara que tomo la fotomulta.
+:: numeroPlaca : número de placa del auto captado en la fotomulta.
 
 TarjetaCirculacion
-:: numTarjeta : 
-:: vigencia : 
-:: fechaVencimiento : 
-:: numeroPlaca : 
-:: rfc : 
+:: numTarjeta : número único de tarjeta de circulación. Se dan conforme se van expidiendo.
+:: vigencia : años de vigencia de la tarjeta.
+:: fechaVencimiento : fecha de vencimiento de la tarjeta de circulación.
+:: numeroPlaca : número de placa del auto para el que se expide la tarjeta.
+:: rfc : RFC de la persona que solicita la tarjeta.
 
 Camara
-:: idCamara : 
-:: coordenadas : 
+:: idCamara : identificador único de la cámara.
+:: coordenadas : las coordenadas de la cámara.
 
 infp
-:: articulo : 
-:: puntos : 
+:: articulo : número del artículo del reglamento de tránsito. Entre 1 y 70, que son los actuales artículos del reglamento vigente (sin contar transitorios, que se derogan o anexan a otros).
+:: puntos : los puntos que dan a la licencia. 1, 3 o 6 puntos.
