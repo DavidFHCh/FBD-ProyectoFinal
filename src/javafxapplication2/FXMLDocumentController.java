@@ -52,6 +52,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField numPlacaConsulta;
     @FXML private Button botonConsultar;
     @FXML private TableView tablaMultas;
+    @FXML private Button limpiarTabla1;
     
     //Pestana RegistrarLicencia
     @FXML private TextField rfcRegMult;
@@ -83,7 +84,12 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void accionLimpiarTablaBoton(ActionEvent event) {//ni siquiera se si este boton se necesario.
-        //SE CREA UNA FUNCION COMO ESTA Y SE LE DA AL BOTON. USTEDES ME DICEN A QUE BOTON.
+        resultadosPredefinidos.getColumns().clear();
+    }
+    
+    @FXML
+    private void accionLimpiarTablaBoton1(ActionEvent event) {//ni siquiera se si este boton se necesario.
+        tablaMultas.getColumns().clear();
     }
     
     @FXML
