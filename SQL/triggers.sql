@@ -23,8 +23,8 @@ END;
 GO
 
 --Trigger suspendida.
---Evita levantar otra multa sobre una licencia que ya tenía doce puntos,
---es decir, que ya fue cancelada.
+--Cancela las licencias que suman 12 puntos y evita levantar otra multa
+--sobre una licencia que ya tenía doce puntos, es decir, que ya fue cancelada.
 --Si se trata de levantar una multa a una licencia cancelada, lanza un
 --error y revierte la operación de inserción.
 CREATE TRIGGER suspendida
@@ -35,12 +35,24 @@ BEGIN
 	SET NOCOUNT ON;
 	declare @lic int;
 	declare @mul int;
-	--última multa agregada
+	declare @fecha date;
+	declare @pts int;
+	--Última multa agregada
 	SET @mul = IDENT_CURRENT('MultaAgente');
 	SELECT @lic = numLicencia
 	FROM MultaAgente
 	WHERE numExpediente = @mul;
-	IF dbo.puntos(@lic) >= 12
+	SELECT @fecha = fechaSusp
+	FROM Licencia
+	WHERE numLicencia = @lic;
+	SET @pts = dbo.puntos(@lic);
+	--Cancelamos la licencia
+	IF @fecha IS NULL AND @pts >= 12
+	BEGIN
+		UPDATE Licencia SET fechaSusp = GETDATE() WHERE numLicencia = @lic;
+	END;
+	--Si la licencia ya había sido cancelada
+	ELSE IF @pts >= 12
 	BEGIN
 		RAISERROR ('La licencia fue cancelada con anterioridad',16,1);
 		ROLLBACK TRANSACTION;
