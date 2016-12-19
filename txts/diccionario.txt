@@ -1,0 +1,114 @@
+Diccionario de datos:
+
+Armadora
+:: id : un identificador único.
+:: calle : calle.
+:: numero : número de calle.
+:: colonia : colonia.
+:: cp : código postal.
+:: estado : estado de la república.
+:: marca : marca para la que fabrica.
+
+Marca
+:: marca : nombre de la marca.
+
+Auto
+:: noseriemotor : número de serie del auto.
+:: transmision : tipo de trnasmisión. 'M' para manual, 'A' para automático.
+:: color : color del auto.
+:: lugarFabricacion : lugar de fabricación. Nombre del país.
+:: marca : la marca del auto.
+:: modelo : el modelo del auto.
+
+Modelo
+:: modelo : nombre del modelo.
+:: capTanque : capacidad del tanque del auto, en litros enteros.
+:: espEquipaje : espacio para equipaje en metros cúbicos enteros.
+:: pasajeros : el número de pasajeros.
+:: cilindros : cantida de cilindros.
+:: litros : litros del motor. Número decimal.
+:: tipo : tipo de auto.
+
+Vender
+:: marca : marca que vende autos.
+:: modelo : modelos que vende la marca.
+
+PropiedadDe
+:: noseriemotor : número de serie del motor.
+:: rfc : RFC del propietario del auto.
+:: actual : nos dice si la persona es el actual propietario del auto.
+:: fechaInicio : fecha en que compra el auto.
+:: fechaFin : fecha en que deja de ser propietario del auto.
+
+Persona
+:: rfc : RFC con homoclave.
+:: nombres : nombre(s).
+:: aPaterno : apellido paterno.
+:: aMaterno : apellido materno.
+:: fechaNac : fecha de nacimiento.
+:: calle : calle del domicilio.
+:: numero : número exterior.
+:: colonia : colonia.
+:: cp : código postal.
+:: estado : estado de la república.
+:: telefono : teléfono.
+:: correo : correo electrónico.
+
+AgenteTransito
+:: numRegistroPersonal : número de registro personal de los agentes de tránsito.
+:: rfc : RFC del agente de tránsito.
+
+Placa
+:: numeroPlaca : número de placa.
+:: estado : estado de la república de la placa.
+:: fechaFin : fecha de cambio de placas.
+:: actual : dice si la placa es la actual del auto.
+:: fechaOtorgacion : fecha en que se otorgan las placas.
+:: rfc : RFC de la persona a quien se le entregaron las placas.
+:: noseriemotor : número de serie del motor para el que se expiden las placas.
+
+Licencia
+:: numLicencia : número de licencia único. Se dan conforme se van expidiendo.
+:: tipo : tipo de licencia. 'A' para licencias tipo A (particulares), 'B' para tipo B (transporte públic individual), 'C' para tipo C (transporte público colectivo), 'D'para tipo D (transporte de carga), 'E' para tipo E (patrullas, ambulancias, etc).
+:: vigencia : años de vigencia de la licencia. Números enteros (no se consideran las permanentes).
+:: vencimiento : año de vencimiento de la licencia.
+:: fechaSusp : fecha en que se cancela la licencia.
+:: rfc : RFC de la persona a quien se expide la licencia.
+
+MultaAgente
+:: numExpediente : 
+:: fecha : 
+:: hora : 
+:: articuloInfringido : 
+:: importe : 
+:: calle : 
+:: numero : 
+:: colonia : 
+:: cp : 
+:: numRegistroPersonal : 
+:: numLicencia : 
+:: numTarjeta : 
+
+FotoMulta
+:: numExpediente : 
+:: fecha : 
+:: hora : 
+:: velocidad : 
+:: color : 
+:: idCamara : 
+:: numeroPlaca : 
+
+TarjetaCirculacion
+:: numTarjeta : 
+:: vigencia : 
+:: fechaVencimiento : 
+:: numeroPlaca : 
+:: rfc : 
+
+Camara
+:: idCamara : 
+:: coordenadas : 
+
+infp
+:: articulo : 
+:: puntos : 
