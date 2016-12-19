@@ -1,4 +1,11 @@
-
+/*
+ * Procedimiento expPlaca para expedir placas de la CDMX.
+ * Registra una nueva placa en la base de datos.
+ * Se debe proporcionar el número de la nueva placa, la fecha de otorgación
+ * (de no ser proporcionada será el día actual), el RFC de la persona que
+ * solicita las placas y el número de serie del auto.
+ * La persona y auto deben estar registrados en la base de datos.
+ */
 CREATE PROCEDURE expPlaca (
 	@numeroPlaca varchar(16),
 	@fechaOtorgacion date = GETDATE(),
@@ -7,8 +14,21 @@ CREATE PROCEDURE expPlaca (
 )
 AS
 BEGIN
-	INSERT INTO Placa (numeroPlaca, estado, actual, fechaOtorgacion, rfc, noseriemotor)
-	VALUES (@numeroPlaca, 'CDMX', 1, @fechaOtorgacion, @rfc, @noseriemotor);
+	SET NOCOUNT ON;
+	IF @numeroPlaca  IS NULL OR @fechaOtorgacion IS NULL OR @rfc IS NULL OR @noseriemotor IS NULL
+	BEGIN
+		RAISERROR('Datos insuficientes.',16,1);
+	END;
+	ELSE
+	BEGIN
+		IF EXISTS IN (SELECT * FROM Placa WHERE noseriemotor = @noseriemotor)
+		BEGIN
+			UPDATE Placa set fechaFin = @fechaOtorgacion, actual = 0
+			WHERE noseriemotor = @noseriemotor AND actual = 1;
+		END;
+		INSERT INTO Placa (numeroPlaca, estado, actual, fechaOtorgacion, rfc, noseriemotor)
+		VALUES (@numeroPlaca, 'CDMX', 1, @fechaOtorgacion, @rfc, @noseriemotor);
+	END;
 END;
 GO
 
@@ -27,6 +47,7 @@ CREATE PROCEDURE expLicencia(
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	IF @tipo IS NULL OR @vigencia IS NULL OR @vencimiento IS NULL OR @rfc IS NULL
 	BEGIN
 		RAISERROR('Datos insuficientes.',16,1);
@@ -55,6 +76,7 @@ CREATE PROCEDURE expTarjeta (
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	IF @vigencia IS NULL OR @fechaVencimiento IS NULL OR @numeroPlaca IS NULL OR @rfc IS NULL
 	BEGIN
 		RAISERROR('Datos insuficientes.',16,1);
@@ -91,6 +113,7 @@ CREATE PROCEDURE regMultaAgente (
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	IF
 	@fecha IS NULL OR
 	@hora IS NULL OR
