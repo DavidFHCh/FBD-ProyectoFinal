@@ -28,7 +28,7 @@ GO
 --Si se trata de levantar una multa a una licencia cancelada, lanza un
 --error y revierte la operación de inserción.
 CREATE TRIGGER suspendida
-ON Licencia
+ON MultaAgente
 AFTER INSERT
 AS
 BEGIN
