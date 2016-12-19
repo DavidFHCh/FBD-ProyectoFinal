@@ -1,14 +1,14 @@
 /*
  * Procedimiento expPlaca para expedir placas de la CDMX.
  * Registra una nueva placa en la base de datos.
- * Se debe proporcionar el número de la nueva placa, la fecha de otorgación
- * (de no ser proporcionada será el día actual), el RFC de la persona que
+ * Se debe proporcionar el número de la nueva placa, la fecha de otorgación,
+ * el RFC de la persona que
  * solicita las placas y el número de serie del auto.
  * La persona y auto deben estar registrados en la base de datos.
  */
 CREATE PROCEDURE expPlaca (
 	@numeroPlaca varchar(16),
-	@fechaOtorgacion date = GETDATE(),
+	@fechaOtorgacion date,
 	@rfc char(13),
 	@noseriemotor char(17)
 )
@@ -21,7 +21,7 @@ BEGIN
 	END;
 	ELSE
 	BEGIN
-		IF EXISTS IN (SELECT * FROM Placa WHERE noseriemotor = @noseriemotor)
+		IF EXISTS (SELECT * FROM Placa WHERE noseriemotor = @noseriemotor)
 		BEGIN
 			UPDATE Placa set fechaFin = @fechaOtorgacion, actual = 0
 			WHERE noseriemotor = @noseriemotor AND actual = 1;
@@ -99,17 +99,17 @@ GO
  * El agente, licencia y tarjeta deben estar registrados en la base de datos.
  */
 CREATE PROCEDURE regMultaAgente (
-	fecha date = GETDATE(),
-	hora time,
-	articuloInfringido tinyint,
-	importe money,
-	calle varchar(32),
-	numero varchar(8) = NULL,
-	colonia varchar(64),
-	cp char(5),
-	numRegistroPersonal varchar(64),
-	numLicencia int,
-	numTarjeta int,
+	@fecha date,
+	@hora time,
+	@articuloInfringido tinyint,
+	@importe money,
+	@calle varchar(32),
+	@numero varchar(8) = NULL,
+	@colonia varchar(64),
+	@cp char(5),
+	@numRegistroPersonal varchar(64),
+	@numLicencia int,
+	@numTarjeta int
 )
 AS
 BEGIN
