@@ -72,15 +72,19 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <DatePicker fx:id="FechaVencimiento" layoutX="345.0" layoutY="298.0" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="298.0" />
+                        <DatePicker fx:id="fechaVencimiento" layoutX="345.0" layoutY="298.0" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="298.0" />
                         <TextField fx:id="rfcRegMult" layoutX="164.0" layoutY="53.0" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="53.0" />
                         <TextField fx:id="vigenLic" layoutX="164.0" layoutY="147.0" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="147.0" />
-                        <ChoiceBox fx:id="tipoLic" layoutX="611.0" layoutY="101.0" prefWidth="150.0" AnchorPane.leftAnchor="611.0" AnchorPane.topAnchor="101.0" />
                         <Label layoutX="123.0" layoutY="57.0" prefHeight="17.0" prefWidth="26.0" text="RFC" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="57.0" />
                         <Label layoutX="113.0" layoutY="151.0" text="VIgencia" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="151.0" />
-                        <Label layoutX="575.0" layoutY="105.0" text="Tipo" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="105.0" />
+                        <Label layoutX="577.0" layoutY="97.0" text="Tipo" AnchorPane.leftAnchor="577.0" AnchorPane.topAnchor="97.0" />
                         <Label layoutX="375.0" layoutY="268.0" text="Fecha deVencimiento" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="268.0" />
                         <Button fx:id="botonAgregar1" layoutX="406.0" layoutY="395.0" mnemonicParsing="false" onAction="#botonAgregar1" text="Agregar" />
+                        <CheckBox fx:id="tipoA" layoutX="636.0" layoutY="45.0" mnemonicParsing="false" text="A" />
+                        <CheckBox fx:id="tipoC" layoutX="636.0" layoutY="97.0" mnemonicParsing="false" text="C" />
+                        <CheckBox fx:id="tipoB" layoutX="636.0" layoutY="70.0" mnemonicParsing="false" text="B" />
+                        <CheckBox fx:id="tipoD" layoutX="636.0" layoutY="122.0" mnemonicParsing="false" text="D" />
+                        <CheckBox fx:id="tipoE" layoutX="636.0" layoutY="151.0" mnemonicParsing="false" text="E" />
                      </children>
                   </AnchorPane>
             </content>

@@ -1,14 +1,17 @@
+package javafxapplication2;
 
-import control.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.CallableStatement;
+import java.time.LocalDate;
+
 
 /**
- * Conexión a la base de datos.
+ * Conexion a la base de datos.
  * @author Turbo Solutions
  */
 public class Conexion {
@@ -56,5 +59,47 @@ public class Conexion {
             System.out.println("SQLException: " + e.getMessage() + " desconectar =(");
         }
     }
+    
+    public void regLicencia(String tipo, String vigencia, String rfc, LocalDate date){
+        
+    }
+     
+    private static void callrqLicencia() throws SQLException {
 
+		Connection dbConnection = null;
+		CallableStatement callableStatement = null;
+
+		String getDBUSERByUserIdSql = "{call expLicencia(?,?,?,?)}";
+
+		try {
+                    Conexion conex = new Conexion();
+                        conex.conectar();
+			dbConnection = conex.con;
+			callableStatement = dbConnection.prepareCall(getDBUSERByUserIdSql);
+
+			callableStatement.setInt(1, 10);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(4, java.sql.Types.DATE);
+
+			// execute getDBUSERByUserId store procedure
+			callableStatement.executeUpdate();
+
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+
+		} finally {
+
+			if (callableStatement != null) {
+				callableStatement.close();
+			}
+
+			if (dbConnection != null) {
+				dbConnection.close();
+			}
+
+		}
+
+	}
 }
