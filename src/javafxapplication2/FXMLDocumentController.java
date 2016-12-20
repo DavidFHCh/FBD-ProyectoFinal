@@ -58,11 +58,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField rfcRegMult;
     @FXML private TextField vigenLic;
     @FXML private Button botonAgregar1;
-    @FXML private CheckBox tipoA;
-    @FXML private CheckBox tipoB;
-    @FXML private CheckBox tipoC;
-    @FXML private CheckBox tipoD;
-    @FXML private CheckBox tipoE;
+    @FXML private RadioButton tipoA;
+    @FXML private RadioButton tipoB;
+    @FXML private RadioButton tipoC;
+    @FXML private RadioButton tipoD;
+    @FXML private RadioButton tipoE;
     @FXML private DatePicker fechaVencimiento;
     
     //Pestana RegistrarMultas
