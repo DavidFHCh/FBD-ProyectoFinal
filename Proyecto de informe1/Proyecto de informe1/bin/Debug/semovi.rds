@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="semovi">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=GILISAAC-PC;Initial Catalog=semovi</ConnectString>
+    <Prompt>Specify a user name and password for data source semovi:</Prompt>
+  </ConnectionProperties>
+  <DataSourceID>b8c3096f-2a96-4f82-ac65-8d84186c720e</DataSourceID>
+</RptDataSource>

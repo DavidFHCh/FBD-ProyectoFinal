@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SEMOVICDMX">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=localhost;Initial Catalog=SEMOVICDMX</ConnectString>
+    <Prompt>Especifique un nombre de usuario y una contraseña para el origen de datos SEMOVICDMX:</Prompt>
+  </ConnectionProperties>
+  <DataSourceID>6bea6d1f-9820-494f-a606-9ddeb0975295</DataSourceID>
+</RptDataSource>
