@@ -335,20 +335,34 @@ public class FXMLDocumentController implements Initializable {
       * @param tableview La tabla a llenar.
       */
     private void llenaTableView(ResultSet rs,TableView tableview){
+        ObservableList<ObservableList> data = FXCollections.observableArrayList();;
           try{
-            for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
-            //We are using non property style for making dynamic table
-            final int j = i;                
-            TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-            col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
-                public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
-                    return new SimpleStringProperty(param.getValue().get(j).toString());                        
-                }                    
-            });
+             for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
+                //We are using non property style for making dynamic table
+                final int j = i;                
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
+                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
+                        return new SimpleStringProperty(param.getValue().get(j).toString());                        
+                    }                    
+                });
 
-            tableview.getColumns().addAll(col); 
-        }
+                tableview.getColumns().addAll(col); 
+                System.out.println("Column ["+i+"] ");
+            }
 
+            while(rs.next()){
+                //Iterate Row
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
+                    //Iterate Column
+                    row.add(rs.getString(i));
+                }
+                System.out.println("Row [1] added "+row );
+                data.add(row);
+
+            }
+            tableview.setItems(data);
           }catch(Exception e){
               e.printStackTrace();
               System.out.println("Error on Building Data");             
