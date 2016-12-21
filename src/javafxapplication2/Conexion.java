@@ -242,6 +242,9 @@ public class Conexion {
                         System.out.println("4");
             ret = callableStatement.getResultSet();
                         System.out.println("5");
+                        
+                        if(ret == null)
+                            System.out.println("Aqui esta el pinche error raro, no soy yo!");
             
         } catch (Exception e) {
 
