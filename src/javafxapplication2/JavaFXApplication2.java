@@ -23,7 +23,7 @@ public class JavaFXApplication2 extends Application {
         
         Scene scene = new Scene(root);
         stage.setResizable(false);
-         stage.setTitle("ULTIMATE TURKEY PUNCHER 44 LIBRE DE VIRUS PROMOCION VIAGRA 25% MIEL DE ABEJA Y TACOS");
+         stage.setTitle("SEMOVI");
         stage.setScene(scene);
         stage.show();
     }
