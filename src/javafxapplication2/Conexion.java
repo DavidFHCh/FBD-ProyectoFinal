@@ -39,10 +39,10 @@ public class Conexion {
         
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost;" + //o la ip del servidor y su puerto
-                                    "databaseName=final;" +
+            String connectionUrl = "jdbc:sqlserver://192.168.0.37;" + //o la ip del servidor y su puerto
+                                    "databaseName=semovi;" +
                                     "user=sa;" +
-                                    "password=fundamentosfbd"; 
+                                    "password=12345"; 
             con = DriverManager.getConnection(connectionUrl);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("SQLException: " + e.getMessage() + " conectar =(");
@@ -252,15 +252,16 @@ public class Conexion {
             System.out.println(e.getMessage());
 
         } finally {
-
+			/*
+			//No cerrar porque crashea Windows y se muere tu perro.
             if (callableStatement != null) {
                 callableStatement.close();
             }
-
+			
             if (dbConnection != null) {
                 dbConnection.close();
             }
-            
+            */
 	}
         return ret;
     }
