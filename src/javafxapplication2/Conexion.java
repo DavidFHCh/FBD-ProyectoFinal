@@ -233,10 +233,15 @@ public class Conexion {
         
 	try {
             Conexion conex = new Conexion();
+            System.out.println("1");
             conex.conectar();
+                        System.out.println("2");
             dbConnection = conex.con;
+                        System.out.println("3");
             callableStatement = dbConnection.prepareCall(proc);
+                        System.out.println("4");
             ret = callableStatement.getResultSet();
+                        System.out.println("5");
             
         } catch (Exception e) {
 
