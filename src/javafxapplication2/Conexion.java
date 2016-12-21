@@ -229,7 +229,7 @@ public class Conexion {
 	CallableStatement callableStatement = null;
         ResultSet ret = null;
         
-        String proc = "{CALL c" + Integer.toString(con) + "}";
+        String proc = "{CALL c" + con + "}";
         
 	try {
             Conexion conex = new Conexion();
