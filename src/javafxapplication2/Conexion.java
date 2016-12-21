@@ -240,6 +240,7 @@ public class Conexion {
                         System.out.println("3");
             callableStatement = dbConnection.prepareCall(proc);
                         System.out.println("4");
+            callableStatement.execute();
             ret = callableStatement.getResultSet();
                         System.out.println("5");
                         
