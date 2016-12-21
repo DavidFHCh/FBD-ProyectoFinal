@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.Time;
@@ -33,6 +32,7 @@ public class Conexion {
     /**
      * Metodo que nos abre la conexion con una base de datos 
      * específica.
+     * @throws java.lang.Exception
      */
     public void conectar()
             throws Exception {
@@ -52,6 +52,7 @@ public class Conexion {
     /**
      * Metodo que nos permite cerrar la conexion con la base de datos.
      * El método debe ser invocado en la capa de Control.
+     * @throws java.sql.SQLException
      */
     public void desconectar()
             throws SQLException {
