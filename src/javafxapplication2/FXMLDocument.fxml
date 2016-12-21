@@ -40,7 +40,6 @@
                               <MenuItem fx:id="consul15" mnemonicParsing="false" onAction="#botonConsulta15" text="Consulta 15" />
                           </items>
                         </MenuButton>
-                        <Button fx:id="limpiarTabla" layoutX="425.0" layoutY="69.0" mnemonicParsing="false" onAction="#accionLimpiarTablaBoton" text="Limpiar Tabla" AnchorPane.rightAnchor="109.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -60,7 +59,6 @@
                         <Label layoutX="385.0" layoutY="72.0" text="o bien " AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="436.0" AnchorPane.topAnchor="72.0" />
                         <Label layoutX="216.0" layoutY="102.0" text="Número de placa" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="102.0" />
                         <Button fx:id="botonConsultar" layoutX="641.0" layoutY="68.0" mnemonicParsing="false" onAction="#botonConsultar" text="Consultar" AnchorPane.bottomAnchor="411.0" AnchorPane.leftAnchor="641.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="68.0" />
-                        <Button fx:id="limpiarTabla1" layoutX="739.0" layoutY="123.0" mnemonicParsing="false" onAction="#accionLimpiarTablaBoton1" text="Limpiar Tabla" />
                      </children>
                   </AnchorPane>
               </content>

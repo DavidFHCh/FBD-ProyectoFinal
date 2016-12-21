@@ -45,7 +45,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML private MenuItem consul13;
     @FXML private MenuItem consul14;
     @FXML private MenuItem consul15;
-    @FXML private Button limpiarTabla;
     @FXML private TableView resultadosPredefinidos;
     
     //Pestana ConsultarMultas
@@ -53,7 +52,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField numPlacaConsulta;
     @FXML private Button botonConsultar;
     @FXML private TableView tablaMultas;
-    @FXML private Button limpiarTabla1;
     
     //Pestana RegistrarLicencia
     @FXML private TextField rfcRegMult;
@@ -83,15 +81,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML private Button botonAgregar2;
     
     
-    @FXML
-    private void accionLimpiarTablaBoton(ActionEvent event) {//ni siquiera se si este boton se necesario.
-        resultadosPredefinidos.getColumns().clear();
-    }
-    
-    @FXML
-    private void accionLimpiarTablaBoton1(ActionEvent event) {//ni siquiera se si este boton se necesario.
-        tablaMultas.getColumns().clear();
-    }
     
     @FXML
     private void botonConsultar(ActionEvent event) {
@@ -335,7 +324,8 @@ public class FXMLDocumentController implements Initializable {
       * @param tableview La tabla a llenar.
       */
     private void llenaTableView(ResultSet rs,TableView tableview){
-        ObservableList<ObservableList> data = FXCollections.observableArrayList();;
+        tableview.getColumns().clear();
+        ObservableList<ObservableList> data = FXCollections.observableArrayList();
           try{
              for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
                 //We are using non property style for making dynamic table
@@ -348,7 +338,6 @@ public class FXMLDocumentController implements Initializable {
                 });
 
                 tableview.getColumns().addAll(col); 
-                System.out.println("Column ["+i+"] ");
             }
 
             while(rs.next()){
@@ -358,7 +347,6 @@ public class FXMLDocumentController implements Initializable {
                     //Iterate Column
                     row.add(rs.getString(i));
                 }
-                System.out.println("Row [1] added "+row );
                 data.add(row);
 
             }
