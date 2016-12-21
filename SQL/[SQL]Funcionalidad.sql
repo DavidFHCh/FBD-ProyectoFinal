@@ -226,3 +226,101 @@ BEGIN
 	END;
 END;
 GO
+
+/*
+ * Procedimiento Multas para consultar multas de agentes de tránsito y fotomultas.
+ * Se debe proporcionar el rfc que aparece en la licencia o las placas del auto.
+ */
+CREATE PROCEDURE Multas (
+	@rfc char(13),
+	@placa varchar(16)
+)
+AS
+BEGIN
+	IF @rfc IS NOT NULL
+	BEGIN
+		SELECT * FROM
+		(SELECT a.numExpediente AS [Expediente],
+			a.fecha AS [Fecha],
+			a.hora AS [Hora],
+			NULL AS [Artículo],
+			NULL AS [Importe],
+			NULL AS [Calle],
+			NULL AS [No.],
+			NULL AS [Colonia],
+			NULL AS [CP],
+			NULL AS [Agente],
+			NULL AS [Licencia],
+			NULL AS [Tarejta circulación],
+			a.velocidad AS [Velocidad],
+			a.color AS [Color],
+			b.coordenadas AS [Coordenadas]
+		FROM (FotoMulta a JOIN Placa p ON a.numeroPlaca = p.numeroPlaca AND p.rfc = @rfc AND p.actual = 1)
+			JOIN Camara b ON a.idcamara = b.idcamara) FM
+		
+		UNION
+		
+		(SELECT a.numExpediente AS [Expediente],
+			a.fecha AS [Fecha],
+			a.hora AS [Hora],
+			a.articuloInfringido AS [Artículo],
+			a.importe AS [Importe],
+			a.calle AS [Calle],
+			a.numero AS [No.],
+			a.colonia AS [Colonia],
+			a.cp AS [CP],
+			a.numRegistroPersonal AS [Agente],
+			a.numLicencia AS [Licencia],
+			a.numTarjeta AS [Tarejta circulación],
+			NULL AS [Velocidad],
+			NULL AS [Color],
+			NULL AS [Coordenadas]
+		FROM (MultaAgente a JOIN Licencia b ON a.numLicencia = b.numLicencia)
+		WHERE b.rfc = @rfc) MA;
+	END;
+	ELSE IF @placa IS NOT NULL
+	BEGIN
+		(SELECT a.numExpediente AS [Expediente],
+			a.fecha AS [Fecha],
+			a.hora AS [Hora],
+			NULL AS [Artículo],
+			NULL AS [Importe],
+			NULL AS [Calle],
+			NULL AS [No.],
+			NULL AS [Colonia],
+			NULL AS [CP],
+			NULL AS [Agente],
+			NULL AS [Licencia],
+			NULL AS [Tarejta circulación],
+			a.velocidad AS [Velocidad],
+			a.color AS [Color],
+			b.coordenadas AS [Coordenadas]
+		FROM FotoMulta a JOIN Camara b ON a.idcamara = b.idcamara
+		WHERE numeroPlaca = @placa) FM
+		
+		UNION
+		
+		(SELECT a.numExpediente AS [Expediente],
+			a.fecha AS [Fecha],
+			a.hora AS [Hora],
+			a.articuloInfringido AS [Artículo],
+			a.importe AS [Importe],
+			a.calle AS [Calle],
+			a.numero AS [No.],
+			a.colonia AS [Colonia],
+			a.cp AS [CP],
+			a.numRegistroPersonal AS [Agente],
+			a.numLicencia AS [Licencia],
+			a.numTarjeta AS [Tarejta circulación],
+			NULL AS [Velocidad],
+			NULL AS [Color],
+			NULL AS [Coordenadas]
+		FROM MultaAgente a JOIN TarjetaCirculacion b ON a.numTarjeta = b.numTarjeta
+		WHERE b.numeroPlaca = @placa) MA
+	END;
+	ELSE
+	BEGIN
+		RAISERROR('Datos insuficientes.',16,1);
+	END;
+END;
+GO
