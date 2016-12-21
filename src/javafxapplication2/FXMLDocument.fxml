@@ -19,8 +19,6 @@
                      <children>
                         <TableView fx:id="resultadosPredefinidos" layoutX="11.0" layoutY="164.0" prefHeight="200.0" prefWidth="596.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="164.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
                           </columns>
                         </TableView>
                         <MenuButton fx:id="tiposConsultas" layoutX="109.0" layoutY="69.0" mnemonicParsing="false" text="Elegir Consulta" AnchorPane.leftAnchor="109.0">
@@ -53,8 +51,6 @@
                      <children>
                         <TableView fx:id="tablaMultas" layoutX="320.0" layoutY="239.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="164.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
                           </columns>
                         </TableView>
                         <TextField fx:id="numPlacaConsulta" layoutX="329.0" layoutY="39.0" AnchorPane.bottomAnchor="381.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="98.0" />
