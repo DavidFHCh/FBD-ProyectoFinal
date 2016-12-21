@@ -255,8 +255,8 @@ BEGIN
 			a.velocidad AS [Velocidad],
 			a.color AS [Color],
 			b.coordenadas AS [Coordenadas]
-		FROM FotoMulta a JOIN Camara b ON a.idcamara = b.idcamara
-		WHERE numeroPlaca = @placa) FM
+		FROM (FotoMulta a JOIN Placa p ON a.numeroPlaca = p.numeroPlaca AND p.rfc = @rfc AND p.actual = 1)
+			JOIN Camara b ON a.idcamara = b.idcamara) FM
 		
 		UNION
 		
@@ -275,8 +275,8 @@ BEGIN
 			NULL AS [Velocidad],
 			NULL AS [Color],
 			NULL AS [Coordenadas]
-		FROM (MultaAgente a JOIN Placa p ON a.numeroPlaca = p.numeroPlaca AND p.rfc = @rfc)
-			JOIN Licencia b ON a.numLicencia = b.numLicencia) MA;
+		FROM (MultaAgente a JOIN Licencia b ON a.numLicencia = b.numLicencia)
+		WHERE b.rfc = @rfc) MA;
 	END;
 	ELSE IF @placa IS NOT NULL
 	BEGIN
