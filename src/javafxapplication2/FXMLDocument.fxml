@@ -128,6 +128,40 @@
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Registrar Placa">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <DatePicker fx:id="emisionPlaca" layoutX="212.0" layoutY="329.0" />
+                        <TextField fx:id="serialPlaca" layoutX="212.0" layoutY="137.0" />
+                        <TextField fx:id="rfcPlaca" layoutX="212.0" layoutY="54.0" />
+                        <TextField fx:id="numPlaca1" layoutX="212.0" layoutY="227.0" />
+                        <Label layoutX="181.0" layoutY="58.0" text="RFC" />
+                        <Label layoutX="83.0" layoutY="141.0" text="No. de Serie del Motor" />
+                        <Label layoutX="178.0" layoutY="231.0" text="Placa" />
+                        <Label layoutX="114.0" layoutY="333.0" text="Fecha de Emisión" />
+                        <Button fx:id="botonAgregar3" layoutX="672.0" layoutY="202.0" mnemonicParsing="false" onAction="#botonAgregar3" text="Agregar" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Registrar Tarjeta de Circulación">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="botonAgregar4" layoutX="642.0" layoutY="199.0" mnemonicParsing="false" onAction="#botonAgregar4" text="Agregar" />
+                        <Label layoutX="156.0" layoutY="324.0" text="Fecha de Emisión" />
+                        <Label layoutX="160.0" layoutY="244.0" text="Viegencia(años)" />
+                        <Label layoutX="216.0" layoutY="157.0" text="Placa" />
+                        <Label layoutX="219.0" layoutY="67.0" text="RFC" />
+                        <TextField fx:id="vigTarjeta" layoutX="250.0" layoutY="240.0" />
+                        <TextField fx:id="placaTarjeta" layoutX="250.0" layoutY="153.0" />
+                        <TextField fx:id="rfcTarjeta" layoutX="250.0" layoutY="63.0" />
+                        <DatePicker fx:id="emisionTarjeta" layoutX="250.0" layoutY="320.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
     </children>

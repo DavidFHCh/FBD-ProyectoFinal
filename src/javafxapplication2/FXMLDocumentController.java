@@ -80,6 +80,19 @@ public class FXMLDocumentController implements Initializable {
     @FXML private DatePicker fecha;
     @FXML private Button botonAgregar2;
     
+    //Pestana RegistrarPlaca
+    @FXML private TextField rfcPlaca;
+    @FXML private TextField serialPlaca;
+    @FXML private TextField numPlaca1;
+    @FXML private DatePicker emisionPlaca;       
+    @FXML private Button botonAgregar3;
+    
+    //Pestana Registrartarjeta
+    @FXML private TextField rfcTarjeta;
+    @FXML private TextField placaTarjeta;
+    @FXML private TextField vigTarjeta;
+    @FXML private DatePicker emisionTarjeta;       
+    @FXML private Button botonAgregar4;
     
     
     @FXML
@@ -164,6 +177,36 @@ public class FXMLDocumentController implements Initializable {
         }
     }
   
+    
+    private void botonAgregar3(ActionEvent event){
+         LocalDate sfecha = emisionPlaca.getValue();
+         String rfc = rfcPlaca.getCharacters().toString();
+         String numplaca = serialPlaca.getCharacters().toString();
+         String serial = numPlaca1.getCharacters().toString();
+         
+         // Llamada a BD
+        try {
+            Conexion.regPlaca(numplaca, sfecha, rfc, serial);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void botonAgregar4(ActionEvent event){
+         LocalDate sfecha = emisionTarjeta.getValue();
+         String rfc = rfcTarjeta.getCharacters().toString();
+         String numplaca = placaTarjeta.getCharacters().toString();
+         int serial = Integer.parseInt(vigTarjeta.getCharacters().toString());
+         
+         // Llamada a BD
+        try {
+            Conexion.regTarjeta(serial, sfecha, numplaca, rfc);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
     //en todos estos se va a llamarel metodo llenaTableView, con el respectivo resultset.
     @FXML
     private void botonConsulta1(ActionEvent event) {
