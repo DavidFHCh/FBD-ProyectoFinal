@@ -177,7 +177,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
   
-    
+    @FXML
     private void botonAgregar3(ActionEvent event){
          LocalDate sfecha = emisionPlaca.getValue();
          String rfc = rfcPlaca.getCharacters().toString();
@@ -192,6 +192,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    @FXML
     private void botonAgregar4(ActionEvent event){
          LocalDate sfecha = emisionTarjeta.getValue();
          String rfc = rfcTarjeta.getCharacters().toString();
