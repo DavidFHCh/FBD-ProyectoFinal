@@ -239,7 +239,6 @@ AS
 BEGIN
 	IF @rfc IS NOT NULL
 	BEGIN
-		SELECT * FROM
 		(SELECT a.numExpediente AS [Expediente],
 			a.fecha AS [Fecha],
 			a.hora AS [Hora],
@@ -254,12 +253,10 @@ BEGIN
 			NULL AS [Tarejta circulación],
 			a.velocidad AS [Velocidad],
 			a.color AS [Color],
-			b.coordenadas AS [Coordenadas]
-		FROM (FotoMulta a JOIN Placa p ON a.numeroPlaca = p.numeroPlaca AND p.rfc = @rfc AND p.actual = 1)
-			JOIN Camara b ON a.idcamara = b.idcamara) FM
-		
+			a.idCamara AS [Camara]
+		FROM FotoMulta a JOIN Placa p ON a.numeroPlaca = p.numeroPlaca
+		WHERE p.rfc = @rfc AND p.actual = 1)
 		UNION
-		
 		(SELECT a.numExpediente AS [Expediente],
 			a.fecha AS [Fecha],
 			a.hora AS [Hora],
@@ -274,9 +271,9 @@ BEGIN
 			a.numTarjeta AS [Tarejta circulación],
 			NULL AS [Velocidad],
 			NULL AS [Color],
-			NULL AS [Coordenadas]
-		FROM (MultaAgente a JOIN Licencia b ON a.numLicencia = b.numLicencia)
-		WHERE b.rfc = @rfc) MA;
+			NULL AS [Camara]
+		FROM MultaAgente a JOIN Licencia b ON a.numLicencia = b.numLicencia
+		WHERE b.rfc = @rfc);
 	END;
 	ELSE IF @placa IS NOT NULL
 	BEGIN
@@ -294,12 +291,10 @@ BEGIN
 			NULL AS [Tarejta circulación],
 			a.velocidad AS [Velocidad],
 			a.color AS [Color],
-			b.coordenadas AS [Coordenadas]
-		FROM FotoMulta a JOIN Camara b ON a.idcamara = b.idcamara
-		WHERE numeroPlaca = @placa) FM
-		
+			a.idCamara AS [Camara]
+		FROM FotoMulta a
+		WHERE numeroPlaca = @placa)
 		UNION
-		
 		(SELECT a.numExpediente AS [Expediente],
 			a.fecha AS [Fecha],
 			a.hora AS [Hora],
@@ -314,9 +309,9 @@ BEGIN
 			a.numTarjeta AS [Tarejta circulación],
 			NULL AS [Velocidad],
 			NULL AS [Color],
-			NULL AS [Coordenadas]
+			NULL AS [Camara]
 		FROM MultaAgente a JOIN TarjetaCirculacion b ON a.numTarjeta = b.numTarjeta
-		WHERE b.numeroPlaca = @placa) MA
+		WHERE b.numeroPlaca = @placa);
 	END;
 	ELSE
 	BEGIN
