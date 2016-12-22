@@ -100,7 +100,17 @@ public class FXMLDocumentController implements Initializable {
         String rfc = rfcConsulta.getCharacters().toString();
         String numPlaca = numPlacaConsulta.getCharacters().toString();
         //aqui llama el metodo que le corresponda del controlador.
-        
+        String param;
+        if (!rfc.equals(""))
+            param = rfc;
+        else
+            param = numPlaca
+
+        try {
+            Conexion.getMultas(param);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         
     }
     

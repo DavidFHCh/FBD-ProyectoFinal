@@ -263,4 +263,49 @@ public class Conexion {
 	}
         return ret;
     }
+
+    /**
+     * Llama al procedure para consultas multas
+     * @param param El parámetro del procedure, ya sea el RFC o la Placa
+     */
+    public static ResultSet getMultas(String param) throws SQLException{
+        Connection dbConnection = null;
+    CallableStatement callableStatement = null;
+        ResultSet ret = null;
+        
+        String proc = "{CALL Multas(?)}";
+        
+    try {
+            Conexion conex = new Conexion();
+
+            conex.conectar();
+
+            dbConnection = conex.con;
+
+            callableStatement = dbConnection.prepareCall(proc);
+            callableStatement.setString(1,param);
+
+            callableStatement.execute();
+            ret = callableStatement.getResultSet();
+
+                        
+            
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        } finally {
+            /*
+            //No cerrar porque crashea Windows y se muere tu perro.
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+            
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+            */
+    }
+        return ret;
+    }
 }
