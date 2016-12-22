@@ -232,8 +232,8 @@ GO
  * Se debe proporcionar el rfc que aparece en la licencia o las placas del auto.
  */
 CREATE PROCEDURE Multas (
-	@rfc char(13),
-	@placa varchar(16)
+	@rfc char(13) = NULL,
+	@placa varchar(16) = NULL
 )
 AS
 BEGIN
