@@ -383,9 +383,12 @@ public class FXMLDocumentController implements Initializable {
                 final int j = i;                
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
                 col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
-                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {  
-                     String  s = param.getValue().get(j).toString();
-                     
+                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
+                        String s = "";
+                        try{
+                      s = param.getValue().get(j).toString();
+                        }catch(Exception e) {
+                        }
                      if( s == null)
                          s = "null";
                         return new SimpleStringProperty(s);                        
