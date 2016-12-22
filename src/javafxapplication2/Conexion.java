@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 
-
 /**
  * Conexion a la base de datos.
  * @author Turbo Solutions
@@ -20,8 +19,7 @@ public class Conexion {
     //Objetos para la comunicacion y ejecucion de consultas SQL
     private Connection con;
     private Statement stmt;
-    private ResultSet rs;
-    
+    private ResultSet rs;   
     //Constructor vacío
     public Conexion() {
         stmt = null;
@@ -39,10 +37,10 @@ public class Conexion {
         
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://192.168.0.37;" + //o la ip del servidor y su puerto
+            String connectionUrl = "jdbc:sqlserver://localhost;" + //o la ip del servidor y su puerto
                                     "databaseName=semovi;" +
-                                    "user=sa;" +
-                                    "password=12345"; 
+                                    "user=USUARIO;" +
+                                    "password=CONTRASEÑA"; 
             con = DriverManager.getConnection(connectionUrl);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("SQLException: " + e.getMessage() + " conectar =(");
