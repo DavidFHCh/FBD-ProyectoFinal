@@ -104,7 +104,7 @@ public class FXMLDocumentController implements Initializable {
         param = (!rfc.equals("")) ? rfc : numPlaca;
 
         try {
-            Conexion.getMultas(param);
+            llenaTableView(Conexion.getMultas(param), resultadosPredefinidos);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
