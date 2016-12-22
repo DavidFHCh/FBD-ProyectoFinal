@@ -101,10 +101,7 @@ public class FXMLDocumentController implements Initializable {
         String numPlaca = numPlacaConsulta.getCharacters().toString();
         //aqui llama el metodo que le corresponda del controlador.
         String param;
-        if (!rfc.equals(""))
-            param = rfc;
-        else
-            param = numPlaca
+        param = (!rfc.equals("")) ? rfc : numPlaca;
 
         try {
             Conexion.getMultas(param);
